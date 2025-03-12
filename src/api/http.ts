@@ -11,15 +11,17 @@ const http = axios.create({
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
-    "Authorization": "b4be1354-2099-470c-8abe-a96367db4686"
+    "Authorization": ""
   },
 });
 
 // 请求拦截器
 http.interceptors.request.use(
   (config: any) => {
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
     // const token = "b4be1354-2099-470c-8abe-a96367db4686"
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
 
     // 如果有 token 且不是登录/注册接口，则添加到 header
     if (
