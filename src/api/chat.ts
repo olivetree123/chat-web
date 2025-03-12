@@ -43,7 +43,7 @@ export const getModelList = async (): Promise<string[]> => {
 // 发送对话请求 - 使用POST方法的SSE实现
 export const createConversation = async (params: CreateConversationRequest): Promise<CustomEventSource> => {
   // const token = localStorage.getItem('auth_token') || '';
-  const token = '5e765a9c-9e51-4c1c-a50d-393a1f21374e';
+  // const token = '5e765a9c-9e51-4c1c-a50d-393a1f21374e';
 
   const formData = new FormData();
 
@@ -62,13 +62,13 @@ export const createConversation = async (params: CreateConversationRequest): Pro
   }
 
   // 设置头部信息
-  const headers: Record<string, string> = {
-    'Authorization': `${token}`
-  };
+  // const headers: Record<string, string> = {
+  //   'Authorization': `${token}`
+  // };
 
   const response = await fetch('/api/chat/create', {
     method: 'POST',
-    headers,
+    // headers,
     body: formData,
     cache: 'no-store',
   });
