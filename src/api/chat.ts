@@ -160,7 +160,7 @@ export const createConversation = async (params: CreateConversationRequest): Pro
           }
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       if (eventSource.onerror) {
         eventSource.onerror(error);
       }

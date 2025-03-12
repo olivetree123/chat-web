@@ -17,7 +17,7 @@ const http = axios.create({
 
 // 请求拦截器
 http.interceptors.request.use(
-  (config) => {
+  (config: any) => {
     const token = localStorage.getItem("token");
     // const token = "b4be1354-2099-470c-8abe-a96367db4686"
 
@@ -32,14 +32,14 @@ http.interceptors.request.use(
 
     return config;
   },
-  (error) => {
+  (error: any) => {
     return Promise.reject(error);
   },
 );
 
 // 响应拦截器
 http.interceptors.response.use(
-  (response) => {
+  (response: any) => {
     const res = response.data as ApiResponse<any>;
 
     if (res.code !== 0) {
@@ -48,7 +48,7 @@ http.interceptors.response.use(
 
     return res.data;
   },
-  (error) => {
+  (error: any) => {
     // 如果是 401 未授权，说明 token 过期或无效，需要重新登录
     if (error.response?.status === 401) {
       // 清除本地存储的登录信息
